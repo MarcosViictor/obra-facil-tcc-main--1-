@@ -11,7 +11,7 @@ SECRET_KEY = 'django-insecure-rrza)(jcbvv52@dswf^yb^np=2pniqd88s!ix$nr8(23nduya8
 DEBUG = False
 
 # Adicionar domínio do Vercel
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']  # Inclua localhost para testes locais
+ALLOWED_HOSTS = ['*', '127.0.0.1']  # Inclua localhost para testes locais
 
 # Apps instalados
 INSTALLED_APPS = [
