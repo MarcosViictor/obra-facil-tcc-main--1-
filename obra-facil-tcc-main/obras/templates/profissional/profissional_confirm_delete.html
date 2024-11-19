@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon"  href="{% static 'img/favicon .ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/favicon .ico' %}" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Profissional</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e6f7ff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 8%;
+        }
+        .card {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .card-header {
+            background-color: #05aceb;
+            color: #ffffff;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.4rem;
+            padding: 1rem;
+        }
+        .card-body {
+            padding: 2rem;
+        }
+        .logo {
+            max-width: 150px; /* Increased logo size */
+            margin-bottom: 20px;
+            filter: drop-shadow(3px 5px 8px rgba(0, 0, 0, 0.3)); 
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .btn-danger, .btn-secondary {
+            width: 100%;
+            margin-top: 15px;
+            padding: 0.8rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: #ffffff;
+            border: none;
+        }
+        .btn-secondary {
+            background-color: #05aceb;
+            color: #ffffff;
+            border: none;
+        }
+        .btn-secondary:hover {
+            background-color: #039ad5;
+        }
+    </style>
+</head>
+<body>
+
+   
+    <div class="header">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo">
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+               
+            </div>
+            <div class="card-body text-center">
+                <p class="fw-bold" style="color: #333;">Tem certeza que deseja deletar o profissional "{{ object.nome }}"?</p>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Sim, Deletar</button>
+                </form>
+                
+                <a href="{% url 'profissional-list' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

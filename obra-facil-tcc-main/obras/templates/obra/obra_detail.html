@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="icon"  href="{% static 'img/favicon .ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/favicon .ico' %}" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ object.nome }} - Detalhes</title>
+
+    
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
+
+    
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e6f7ff;
+        }
+        .container {
+            max-width: 700px;
+            margin-top: 2%;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+        .card-header {
+            background-color: #05aceb;
+            color: #ffffff;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .btn-warning {
+            color: #ffffff;
+        }
+        .btn-info {
+            background-color: #05aceb;
+            color: #ffffff;
+            border: none;
+        }
+        .btn-info:hover {
+            background-color: #048fb8;
+        }
+        .btn-danger, .btn-secondary {
+            border: none;
+        }
+        .logo {
+            max-width: 160px; 
+            margin: 0 auto 20px;
+            display: block;
+        }
+        .header {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .card-body p, .card-body h5 {
+            color: #333333;
+            margin: 0 0 15px;
+        }
+        .list-group-item {
+            background-color: #f9f9f9;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .list-group-item:nth-child(odd) {
+            background-color: #eaf7fc;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-light">
+
+    <div class="header">
+        <img src="{% static 'img/logo.png' %}" alt="Logo da Empresa" class="logo" style="border-radius: 50%; border: 2px solid #05aceb;">
+    </div>
+
+    <div class="container">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h1 class="h4">{{ object.nome }}</h1>
+            </div>
+            <div class="card-body">
+                <p class="fw-bold">{{ object.descricao }}</p>
+                <p><strong>Endereço:</strong> {{ object.endereco }}</p>
+                <p><strong>Data de Início:</strong> {{ object.data_inicio }}</p>
+                <p><strong>Previsão de Fim:</strong> {{ object.dt_prev_fim }}</p>
+                <p><strong>Gerente:</strong> {{ object.gerente }}</p>
+
+                <h5 class="mt-4">Mestres:</h5>
+                <ul class="list-group mb-4">
+                    {% for mestre in object.mestres.all %}
+                        <li class="list-group-item">{{ mestre }}</li>
+                    {% empty %}
+                        <li class="list-group-item">Nenhum mestre cadastrado.</li>
+                    {% endfor %}
+                </ul>
+
+                <div class="btn-group">
+                    <a href="{% url 'obra-update' object.pk %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'obra-delete' object.pk %}" class="btn btn-danger">Excluir</a>
+                    <a href="{% url 'obra-list' %}" class="btn btn-secondary">Voltar</a>
+                    <a href="{% url 'dashboard-obra' object.pk %}" class="btn btn-info">Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+   
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Novo Usuário</title>
+    <link rel="icon"  href="{% static 'img/favicon .ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'img/favicon .ico' %}" type="image/png">
+
+   
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    
+   
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+    <style>
+        /* Cores personalizadas */
+        :root {
+            --primary-color: #05aceb; 
+            --secondary-color: #ffffff; 
+            --button-color: #05aceb; 
+            --text-color: #333333; 
+            --link-color: #4e73df;
+            --highlight-color: #ff8c00; /* Laranja para destaque */
+        }
+
+        body {
+            background-color: var(--primary-color);
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(180deg, var(--primary-color) 10%, #224abe 100%);
+            background-size: cover;
+        }
+
+        .card {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, .small, .text-center h4 {
+            color: var(--text-color);
+        }
+
+        .header-logo img {
+            max-width: 240px; /* Ajuste para aumentar o tamanho da logo */
+            margin: auto;
+        }
+
+        /* Estilo específico para o título */
+        .highlight-title {
+            color: var(--highlight-color); /* Cor laranja */
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: var(--button-color);
+            border: none;
+        }
+
+        a {
+            color: var(--link-color);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    
+                    <div class="col-lg-4 d-flex align-items-center justify-content-center">
+                        <div class="header-logo">
+                            <img src="{% static 'img/logo.png' %}" alt="Logo">
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 mb-4 highlight-title">Cadastro de Usuário</h1>
+                            </div>
+                            <form method="POST" class="user">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{ formulario.as_p }}
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">Cadastrar</button>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <p class="small">Já tem uma conta? <a href="{% url 'login' %}">Faça o login</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+ 
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+</body>
+
+</html>
